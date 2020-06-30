@@ -11,6 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//用户添加路由
+Route::get('user/add','UserController@add');
+//用户执行添加路由
+Route::post('user/store','UserController@store');
+
+Route::get('user/index','UserController@index');
+
+Route::get('user/edit/{id}','UserController@edit');
+
+Route::post('user/update/','UserController@update');
+
+Route::get('user/del/{id}','UserController@del');
+
+/***admin***/
+Route::get('admin/login','Admin\LoginController@login');
+//验证码
+Route::get('admin/code','Admin\LoginController@code');
+
