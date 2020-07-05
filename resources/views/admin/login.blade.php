@@ -21,38 +21,81 @@
     
     <div class="login layui-anim layui-anim-up">
         <div class="message">x-admin2.0-管理登录</div>
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+        <ul>
+          @if(is_object($errors))
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            @else
+            <li>{{ $errors }}</li>
+            @endif
+        </ul>
+        </div>
+        @endif
+
+
         <div id="darkbannerwrap"></div>
         
-        <form method="post" class="layui-form" >
+        <form method="post" class="layui-form" action="{{url('admin/dologin')}}" >
+          {{csrf_field()}}
             <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
             <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
             <hr class="hr15">
-            <input name="code" style="width:120px" lay-verify="required" placeholder="验证码"  type="text" class="layui-input">
-             <div style="float:right;margin-top:-45px;"><img src="{{captcha_src()}}" onclick="this.src='{{captcha_src()}}?'+Math.random()"></div>
+            <input name="captcha" style=width:120px lay-verify="required" placeholder="验证码"  type="text" class="layui-input">
+             <div style=float:right;margin-top:-45px;><img src="{{captcha_src()}}" onclick="this.src='{{captcha_src()}}?'+Math.random()"></div>
             <hr class="hr15">
-            <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+            <input value="登录" lay-submit lay-filter="login" style=width:100%; type="submit">
             <hr class="hr20" >
         </form>
     </div>
 
     <script>
-        $(function  () {
-            layui.use('form', function(){
-              var form = layui.form;
+        // $(function  () {
+          layui.use('form', function(){
+          var form = layui.form;
+          
+          //监听提交
+          form.on('submit(login)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+          });
+        // });
               // layer.msg('玩命卖萌中', function(){
               //   //关闭后的操作
               //   });
               //监听提交
-              form.on('submit(login)', function(data){
-                // alert(888)
-                layer.msg(JSON.stringify(data.field),function(){
-                    location.href='index.html'
-                });
+              // form.on('submit(login)', function(data){
+              //   // console.log(data);
+              //   $.ajax({
+              //   url:'dologin',
+              //   type:'post',
+              //   dataType:'json',
+              //   data:data.field,
+                // success:function(data)
+                // {
+                //   console.log(data);
+                // //   if(data)
+                // //   {
+                // //     layer.msg('data',function(){
+                // //     // location.href="{{url('admin/index')}}"
+                // // });
+                // //   }
+                // //   esle
+                // //   {
+                // //     layer.msg('data',function(){
+                // //     // location.href="{{url('admin/login')}}"
+                // // });
+                // //   }
+                // }
+              })
+                
                 return false;
-              });
-            });
-        })
+              // });
+            // });
+        // })
     </script>
     <!-- 底部结束 -->
    
