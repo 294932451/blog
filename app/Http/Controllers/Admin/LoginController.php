@@ -96,4 +96,9 @@ class LoginController extends Controller
         session()->flush();
         return redirect('admin/login');
     }
+
+    public function noaccess()
+    {
+        echo "无权限";
+    }
 }

@@ -72,7 +72,7 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('多级分类','cate.html')">
+                                <a onclick="xadmin.add_tab('多级分类','cate')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>多级分类</cite></a>
                             </li>
@@ -103,7 +103,7 @@
                                     <cite>管理员列表</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('角色管理','admin-role.html')">
+                                <a onclick="xadmin.add_tab('角色管理','role')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>角色管理</cite></a>
                             </li>
@@ -177,6 +177,19 @@
                                 <a onclick="xadmin.add_tab('图标对应字体','unicode.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>图标对应字体</cite></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="iconfont left-nav-li" lay-tips="文章列表">&#xe6b4;</i>
+                            <cite>文章列表</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('文章列表','article')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>文章列表</cite></a>
                             </li>
                         </ul>
                     </li>

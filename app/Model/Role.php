@@ -16,4 +16,10 @@ class Role extends Model
     // ];
     protected $guarded = [];
     public $timestamps = false;
+
+    //添加动态熟悉，
+    public function permission()
+    {
+        return $this->belongsToMany('App\Model\Permission','blog_role_permission','role_id','permission_id');
+    }
 }

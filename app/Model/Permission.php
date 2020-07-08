@@ -12,7 +12,7 @@ class Permission extends Model
     public $primaryKey = 'id';
     //3.允许被批量操作得字段
     // protected $fillable = [
-    //     'username','password','created_at','updated_at'
+    //     'username','password','created_at','updat ed_at'
     // ];
     protected $guarded = [];
     public $timestamps = false;

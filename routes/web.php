@@ -39,7 +39,9 @@ Route::post('dologin','LoginController@dologin');
 Route::get('code','LoginController@code');
 });
 
-Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],function()
+
+Route::get('noaccess','Admin\LoginController@noaccess');
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['hasrole','islogin']],function()
 {
 	//首页
 Route::get('index','LoginController@index');
@@ -52,5 +54,18 @@ Route::get('logout','LoginController@logout');
 //后台用户模块路由
 Route::resource('user','UserController');
 Route::post('user/delall','UserController@delAll');
+
+//角色模块
+Route::get('role/auth/{id}','RoleController@auth');
+Route::resource('role','RoleController');
+
+//修改排序
+Route::post('cate/changesort','CateController@changeSort');
+//分类模块
+Route::resource('cate','CateController');
+
+//文章模块路由
+Route::post('article/upload','ArticleController@upload');
+Route::resource('article','ArticleController');
 });
 
